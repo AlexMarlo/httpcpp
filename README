@@ -1,0 +1,43 @@
+****** buid ******
+
+1) Install required libs on Ubuntu:
+*gcc 4.8
+aptitude install build-essential
+
+*libevent
+aptitude install libevent-dev
+
+*gtest
+aptitude install libgtest-dev
+Google test must be compiled after packege installation:
+cd /usr/src/gtest/
+mkdir build
+cd build
+cmake ..
+make
+cp libgtest* /usr/lib/
+
+*jsoncpp
+aptitude install libjsoncpp-dev
+
+2) run ./configure
+3) run make
+
+****** configure ******
+
+Config stored in config/config.json file in json format.
+It contains three parameters:
+ip - IP address of server
+port - port of server
+resourceCount - count of available resources
+
+
+****** test ******
+Command to run tests:
+make runtest
+It should be runned after building.
+
+****** run ******
+Command to run server:
+make run
+It should be runned after building.
