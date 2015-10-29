@@ -16,7 +16,7 @@ Server::Server( HttpRequestHandler &httpRequestHandler):  _httpRequestHandler( h
 Server::~Server()
 {}
 
-bool Server::run( const std::string ip, const std::uint32_t port)
+bool Server::run( const std::string &ip, const std::uint32_t &port)
 {
 	if (!event_init())
 		return false;
@@ -42,7 +42,8 @@ void Server::requestHandler( evhttp_request* evRequest, void* serverPtr)
 	if( evRequest->type != evhttp_cmd_type::EVHTTP_REQ_GET)
 	  type = Request::OTHER;
 
-	std::string uri = resm::UriHelper::removeDuplicateSlashes( evRequest->uri);
+	std::string evUri = evRequest->uri;
+	std::string uri = resm::UriHelper::removeDuplicateSlashes( evUri);
 	Request request( type, uri);
 	Response response = server->_httpRequestHandler.handle( request);
 

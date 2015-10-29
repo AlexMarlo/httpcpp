@@ -12,7 +12,7 @@ namespace resm
 class JsonConverter
 {
 public:
-	static std::string listResultToJson( resm::FullListResult fullListResult)
+	static std::string listResultToJson( resm::FullListResult &fullListResult)
 	{
 		Json::Value root;
 		root[ "deallocated"].append(Json::Value::null);
@@ -44,7 +44,7 @@ public:
 		return result;
 	}
 
-	static std::string resourcesListResultToJson( resm::ResourceListResult resourceListResult)
+	static std::string resourcesListResultToJson( resm::ResourceListResult &resourceListResult)
 	{
 		Json::Value root;
 		root.append(Json::Value::null);

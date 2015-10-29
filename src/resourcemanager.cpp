@@ -3,7 +3,7 @@
 namespace resm
 {
 
-ResourceManager::ResourceManager( uint32_t resourceCount):  _resourceCount( resourceCount)
+ResourceManager::ResourceManager( uint32_t &resourceCount):  _resourceCount( resourceCount)
 {
 	initResources();
 }
@@ -11,10 +11,8 @@ ResourceManager::ResourceManager( uint32_t resourceCount):  _resourceCount( reso
 ResourceManager::~ResourceManager()
 {}
 
-ResourceAllocateResult ResourceManager::allocate( std::string user)
+ResourceAllocateResult ResourceManager::allocate( std::string &user)
 {
-	std::lock_guard<std::mutex> lock (_mutex);
-
 	Deallocated::iterator it = _deallocated.begin();
 
 	if( it == _deallocated.end())
@@ -27,10 +25,8 @@ ResourceAllocateResult ResourceManager::allocate( std::string user)
 	return ResourceAllocateResult( true, resId);
 }
 
-bool ResourceManager::deallocate( std::string resource)
+bool ResourceManager::deallocate( std::string &resource)
 {
-	std::lock_guard<std::mutex> lock (_mutex);
-
 	AllocatedInvert::iterator itUser = _allocatedInvert.find( resource);
 	if( itUser == _allocatedInvert.end())
 		return false;
@@ -55,8 +51,6 @@ bool ResourceManager::deallocate( std::string resource)
 
 void ResourceManager::reset()
 {
-	std::lock_guard<std::mutex> lock (_mutex);
-
 	_deallocated.clear();
 	_allocated.clear();
 	_allocatedInvert.clear();
@@ -65,14 +59,12 @@ void ResourceManager::reset()
 
 FullListResult ResourceManager::list()
 {
-	std::lock_guard<std::mutex> lock (_mutex);
 	FullListResult fullListResult( _allocated, _deallocated);
 	return fullListResult;
 }
 
-ResourceListResult ResourceManager::list( std::string user)
+ResourceListResult ResourceManager::list( std::string &user)
 {
-	std::lock_guard<std::mutex> lock (_mutex);
 	ResourceListResult resourceListResult;
     std::pair <Allocated::const_iterator, Allocated::const_iterator> range = _allocated.equal_range( user);
 

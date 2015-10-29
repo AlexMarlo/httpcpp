@@ -5,13 +5,13 @@
 namespace http
 {
 
-HttpRequestHandler::HttpRequestHandler( uint32_t resourceCount): resourceManager( resourceCount)
+HttpRequestHandler::HttpRequestHandler( uint32_t &resourceCount): resourceManager( resourceCount)
 {}
 
 HttpRequestHandler::~HttpRequestHandler()
 {}
 
-Response HttpRequestHandler::handle( Request request)
+Response HttpRequestHandler::handle( Request &request)
 {
 	Response response = this->createBadRequestResponse();
 
@@ -75,7 +75,7 @@ Response HttpRequestHandler::createBadRequestResponse()
 	return response;
 }
 
-Response HttpRequestHandler::createDeallocateResponse( std::string resId)
+Response HttpRequestHandler::createDeallocateResponse( std::string &resId)
 {
 	Response response( 404, "Not Found", "Not allocated.");
 	if( resourceManager.deallocate( resId))
@@ -84,7 +84,7 @@ Response HttpRequestHandler::createDeallocateResponse( std::string resId)
 	return response;
 }
 
-Response HttpRequestHandler::createAllocateResponse( std::string user)
+Response HttpRequestHandler::createAllocateResponse( std::string &user)
 {
 	Response response( 503, "Service Unavailable", "Out of resources.");
 	resm::ResourceAllocateResult resourceAllocateResult = resourceManager.allocate( user);
@@ -95,7 +95,7 @@ Response HttpRequestHandler::createAllocateResponse( std::string user)
 	return response;
 }
 
-Response HttpRequestHandler::createUserListResponse(std::string user)
+Response HttpRequestHandler::createUserListResponse( std::string &user)
 {
 	resm::ResourceListResult resourceListResult = resourceManager.list( user);
 	std::string jsonList = resm::JsonConverter::resourcesListResultToJson( resourceListResult);

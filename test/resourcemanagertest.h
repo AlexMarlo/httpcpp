@@ -12,7 +12,7 @@ class ResourceManagerTest  : public testing::Test {};
 
 TEST_F( ResourceManagerTest, ShouldReturnCorrectResourceCount)
 {
-	uint16_t resourceCount = 10;
+	uint32_t resourceCount = 10;
 	resm::ResourceManager resourceManager( resourceCount);
 
 	EXPECT_EQ( resourceCount, resourceManager.getResourceCount());
@@ -20,7 +20,7 @@ TEST_F( ResourceManagerTest, ShouldReturnCorrectResourceCount)
 
 TEST_F( ResourceManagerTest, ShouldAllocateRes)
 {
-	uint16_t resourceCount = 2;
+	uint32_t resourceCount = 2;
 	std::string bob = "bob";
 	std::string r1 = "r1";
 	resm::ResourceManager resourceManager( resourceCount);
@@ -32,7 +32,7 @@ TEST_F( ResourceManagerTest, ShouldAllocateRes)
 
 TEST_F( ResourceManagerTest, ShouldNotAllocateIfOutOfResources)
 {
-	uint16_t resourceCount = 2;
+	uint32_t resourceCount = 2;
 	std::string bob = "bob";
 	resm::ResourceManager resourceManager( resourceCount);
 
@@ -43,7 +43,7 @@ TEST_F( ResourceManagerTest, ShouldNotAllocateIfOutOfResources)
 
 TEST_F( ResourceManagerTest, ShouldDeallocate)
 {
-	uint16_t resourceCount = 2;
+	uint32_t resourceCount = 2;
 	std::string bob = "bob";
 	std::string r1 = "r1";
 	resm::ResourceManager resourceManager( resourceCount);
@@ -58,7 +58,7 @@ TEST_F( ResourceManagerTest, ShouldDeallocate)
 
 TEST_F( ResourceManagerTest, ShouldNotDeallocateUndefinedRes)
 {
-	uint16_t resourceCount = 2;
+	uint32_t resourceCount = 2;
 	std::string bob = "bob";
 	std::string r1 = "any";
 	resm::ResourceManager resourceManager( resourceCount);
@@ -70,7 +70,7 @@ TEST_F( ResourceManagerTest, ShouldNotDeallocateUndefinedRes)
 
 TEST_F( ResourceManagerTest, ShouldNotDeallocateAlredyDeallocatedRes)
 {
-	uint16_t resourceCount = 2;
+	uint32_t resourceCount = 2;
 	std::string bob = "bob";
 	std::string r1 = "r1";
 	std::string r2 = "r2";
@@ -85,7 +85,7 @@ TEST_F( ResourceManagerTest, ShouldNotDeallocateAlredyDeallocatedRes)
 
 TEST_F( ResourceManagerTest, ShouldReset)
 {
-	uint16_t resourceCount = 2;
+	uint32_t resourceCount = 2;
 	std::string bob = "bob";
 	std::string alice = "alice";
 	resm::ResourceManager resourceManager( resourceCount);
@@ -101,7 +101,7 @@ TEST_F( ResourceManagerTest, ShouldReset)
 
 TEST_F( ResourceManagerTest, ShouldAllocateFirstAvailable)
 {
-	uint16_t resourceCount = 4;
+	uint32_t resourceCount = 4;
 	std::string bob = "bob";
 	std::string alice = "alice";
 	std::string r3 = "r3";
@@ -124,7 +124,7 @@ TEST_F( ResourceManagerTest, ShouldAllocateFirstAvailable)
 
 TEST_F( ResourceManagerTest, ShouldFullList)
 {
-	uint16_t resourceCount = 2;
+	uint32_t resourceCount = 2;
 	std::string bob = "bob";
 	std::string alice = "alice";
 	std::string r1 = "r1";
@@ -154,7 +154,7 @@ TEST_F( ResourceManagerTest, ShouldFullList)
 
 TEST_F( ResourceManagerTest, ShouldListForUser)
 {
-	uint16_t resourceCount = 4;
+	uint32_t resourceCount = 4;
 	std::string bob = "bob";
 	std::string alice = "alice";
 	std::string r1 = "r1";

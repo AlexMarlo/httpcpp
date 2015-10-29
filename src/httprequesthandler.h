@@ -11,18 +11,18 @@ namespace http
 class HttpRequestHandler
 {
 public:
-	HttpRequestHandler( uint32_t resourceCount);
-	virtual ~HttpRequestHandler();
+	HttpRequestHandler( uint32_t &resourceCount);
+	~HttpRequestHandler();
 
-	Response handle( Request request);
+	Response handle( Request &request);
 
 private:
 	Response createResetResponse();
 	Response createListResponse();
 	Response createBadRequestResponse();
-	Response createDeallocateResponse( std::string resId);
-	Response createAllocateResponse( std::string user);
-	Response createUserListResponse( std::string user);
+	Response createDeallocateResponse( std::string &resId);
+	Response createAllocateResponse( std::string &user);
+	Response createUserListResponse( std::string &user);
 
 private:
 	resm::ResourceManager resourceManager;

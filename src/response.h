@@ -10,7 +10,7 @@ class Response
 {
 public:
 	Response( int status, std::string reason, std::string body);
-	virtual ~Response();
+	~Response();
 
 	const std::string& getBody() const
 	{

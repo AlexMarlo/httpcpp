@@ -13,7 +13,7 @@ public:
 	enum TYPE { GET, POST, PUT, DELETE, OTHER };
 
 	Request( TYPE type, std::string uri);
-	virtual ~Request();
+	~Request();
 
 	bool isGet()
 	{

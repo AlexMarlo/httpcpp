@@ -12,7 +12,7 @@ class JsonConverterTest  : public testing::Test {};
 
 TEST_F( JsonConverterTest, ShouldConvertListToJsonWithEmptyAllocated)
 {
-	uint16_t resourceCount = 3;
+	uint32_t resourceCount = 3;
 	std::string expectedJson = "{\"allocated\":[],\"deallocated\":[\"r1\",\"r2\",\"r3\"]}";
 	resm::ResourceManager resourceManager( resourceCount);
 
@@ -23,7 +23,7 @@ TEST_F( JsonConverterTest, ShouldConvertListToJsonWithEmptyAllocated)
 
 TEST_F( JsonConverterTest, ShouldConvertListToJsonWithEmptyDeallocated)
 {
-	uint16_t resourceCount = 3;
+	uint32_t resourceCount = 3;
 	std::string bob = "bob";
 	std::string alice = "alice";
 	std::string expectedJson = "{\"allocated\":{\"r1\":\"alice\",\"r2\":\"bob\",\"r3\":\"bob\"},\"deallocated\":[]}";
@@ -40,7 +40,7 @@ TEST_F( JsonConverterTest, ShouldConvertListToJsonWithEmptyDeallocated)
 
 TEST_F( JsonConverterTest, ShouldConvertListToJson)
 {
-	uint16_t resourceCount = 3;
+	uint32_t resourceCount = 3;
 	std::string bob = "bob";
 	std::string alice = "alice";
 	std::string expectedJson = "{\"allocated\":{\"r1\":\"alice\",\"r2\":\"bob\"},\"deallocated\":[\"r3\"]}";
@@ -56,7 +56,7 @@ TEST_F( JsonConverterTest, ShouldConvertListToJson)
 
 TEST_F( JsonConverterTest, ShouldConvertResourcesListToJson)
 {
-	uint16_t resourceCount = 3;
+	uint32_t resourceCount = 3;
 	std::string bob = "bob";
 	std::string alice = "alice";
 	std::string r2 = "r2";

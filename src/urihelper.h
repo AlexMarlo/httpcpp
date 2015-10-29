@@ -11,7 +11,7 @@ typedef std::vector< std::string> UriPathArray;
 class UriHelper
 {
 public:
-	static std::string removeDuplicateSlashes( std::string str)
+	static std::string removeDuplicateSlashes( std::string &str)
 	{
 		std::string result;
 		bool previouslySlashFound = false;
@@ -36,7 +36,7 @@ public:
 		return result;
 	}
 
-	static UriPathArray splitUriPath( std::string str)
+	static UriPathArray splitUriPath( std::string &str)
 	{
 		UriPathArray result;
 		std::string pathElement = "";

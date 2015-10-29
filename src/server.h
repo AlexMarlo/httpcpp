@@ -13,7 +13,7 @@ class Server
 public:
 	Server( HttpRequestHandler &httpRequestHandler);
 	~Server();
-	bool run( const std::string ip, const std::uint32_t port);
+	bool run( const std::string &ip, const uint32_t &port);
 
 private:
 	static void requestHandler( struct evhttp_request *request, void *serverPtr);
