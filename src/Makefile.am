@@ -4,9 +4,12 @@ libhttpresm_la_CPPFLAGS = -I$(top_srcdir)
 libhttpresm_la_SOURCES =								\
 \
 	urihelper.h											\
+	urihelper.cpp										\
 	resourcemanagertypedefs.h							\
 	jsonconverter.h										\
+	jsonconverter.cpp									\
 	config.h											\
+	config.cpp											\
 	resourcemanager.h									\
 	resourcemanager.cpp									\
 	request.h											\

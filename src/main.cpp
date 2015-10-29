@@ -6,9 +6,10 @@
 
 int main()
 {
-	std::string ip = resm::Config::readIp();
-	std::uint32_t port = resm::Config::readPort();
-	std::uint32_t resourceCount = resm::Config::readResourceCount();
+	resm::Config config;
+	std::string ip = config.readIp();
+	std::uint32_t port = config.readPort();
+	std::uint32_t resourceCount = config.readResourceCount();
 
 	::http::HttpRequestHandler httpRequestHandler( resourceCount);
 	::http::Server server( httpRequestHandler);
